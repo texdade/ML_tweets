@@ -1,2 +1,2 @@
-# ML_tweets
+# ML_tweets - Machine Learning course | Exercise 2
 Machine Learning system able to recognize if a tweet was created by D.Trump or H.Clinton
