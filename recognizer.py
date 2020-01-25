@@ -34,9 +34,13 @@ kf = KFold(n_splits=3, shuffle=True, random_state=42)
 
 alpha=[1.0, 0.9, 0.8, 0.7, 0.5, 0.4, 0.3, 0.1]
 accuracy_scores = []
+kfold_stats = []
 
 for alpha_value in alpha:
     accuracy = 0
+    prec = 0
+    rec = 0
+    f1 = 0
     for train_index, test_index in kf.split(tweets_train):
         x_train, x_test = wordCounter.fit_transform(tweets_train[train_index]), wordCounter.transform(tweets_train[test_index])
         y_train, y_test = targets_train[train_index], targets_train[test_index]
@@ -45,12 +49,24 @@ for alpha_value in alpha:
         mnb = mnb.fit(x_train, y_train)
         pred = mnb.predict(x_test)
         accuracy = accuracy + accuracy_score(y_test, pred)
+        results = classification_report(y_test, pred, output_dict=True)
+        prec = prec + results["weighted avg"]["precision"]
+        rec = rec + results["weighted avg"]["recall"]
+        f1 = f1 + + results["weighted avg"]["f1-score"]
     
     accuracy = accuracy/3
+    prec = prec/3
+    rec = rec/3
+    f1 = f1/3
     accuracy_scores.append(accuracy)
+    kfold_stats.append([alpha_value,prec,rec,f1])
 
 best_index = np.array(accuracy_scores).argmax()
 best_alpha = alpha[best_index]
+
+print("CROSS VALIDATION STATISTICS")
+for stat in kfold_stats:
+    print("Alpha: "+str(stat[0])+" | Precision: "+str(stat[1])+" | Recall "+str(stat[2])+" | F1: "+str(stat[3]))
 
 #TRAINING AND TESTING
 print("Training model with alpha: "+ str(best_alpha))
