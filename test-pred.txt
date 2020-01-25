@@ -203,10 +203,10 @@ HC
 HC
 HC
 DT
-DT
 HC
 HC
 HC
+DT
 HC
 DT
 DT
@@ -916,8 +916,8 @@ DT
 HC
 DT
 DT
-HC
 DT
+DT
 HC
 DT
 HC
@@ -1349,8 +1349,8 @@ HC
 DT
 DT
 DT
-HC
 HC
+DT
 HC
 HC
 DT
@@ -1402,8 +1402,8 @@ HC
 HC
 HC
 DT
-HC
 HC
+DT
 HC
 HC
 DT
@@ -1467,7 +1467,7 @@ HC
 DT
 DT
 DT
-DT
+HC
 HC
 DT
 HC
