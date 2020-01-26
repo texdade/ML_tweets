@@ -32,7 +32,7 @@ text_wordCnt_test=wordCounter.transform(tweets_test)
 #VALIDATION PHASE with kfold (adjusting alpha parameter)
 kf = KFold(n_splits=3, shuffle=True, random_state=42)
 
-alpha=[1.0, 0.9, 0.8, 0.7, 0.5, 0.4, 0.3, 0.1]
+alpha=[1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1]
 accuracy_scores = []
 kfold_stats = []
 
